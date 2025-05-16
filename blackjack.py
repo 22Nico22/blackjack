@@ -8,10 +8,12 @@ def npc():
     jatekos.append(random.randint(2, 11))
     jatekosdb = len(jatekos)
     jatekosertek = sum(jatekos)
-    print("jatekos")
+    print(jatekos)
+    kartyahuzas = input("Szeretnél kártyát húzni ?")
+    if kartyahuzas.lower == "igen":
+        jatekos.append(random.randint(2, 11))
     print(f"Összesen: {jatekosertek}")
     print(f"Játékos lapjainak darab száma: {jatekosdb}")
-    print("")
     print("")
     print("Npc lapjai:")
     npc = []
@@ -22,6 +24,10 @@ def npc():
     npcdb = len(npc)
     print(f"Gép lapjai: {npcertek}")
     print(f"Gép lapjainak darab száma: {npcdb}")
+    print("")
+    return jatekosertek, npcertek
+
+
 
 def embervsember():
     print("1. játékos lapjai:")
@@ -31,9 +37,11 @@ def embervsember():
     egyjatekosertek = sum(egyjatekos)
     egyjatekosdb = len(egyjatekos)
     print(egyjatekos)
+    kartyahuzas = input("Szeretnél kártyát húzni ?")
+    if kartyahuzas.lower == "igen":
+        egyjatekos.append(random.randint(2, 11))
     print(f"Összege: {egyjatekos}")
     print(f"Játékos 1 lapjainak száma: {egyjatekosdb}")
-    print("")
     print("")
     kettojatekos = []
     kettojatekos.append(random.randint(2, 11))
@@ -41,28 +49,33 @@ def embervsember():
     kettojatekosertek = sum(egyjatekos)
     kettojatekosdb = len(kettojatekos)
     print(kettojatekos)
+    kartyahuzasketto = input("Szeretnél kártyát húzni ?")
+    if kartyahuzas.lower == "igen":
+        kettojatekos.append(random.randint(2, 11))
     print(f"Összege: {kettojatekosertek}")
     print(f"Játékos 2 lapjainak száma: {kettojatekosdb}")
+    print("")
+    return egyjatekosertek, kettojatekosertek
 
 if jatekmod == "Gép":
-    npc()
+    jatekosertek, npcertek = npc()
     if jatekosertek > 21:
         print("A gép nyerte!")
-    if npcertek > 21
+    if npcertek > 21:
         print("Játékos nyerte!")
     if jatekosertek > npcertek:
         print("Játékos nyerte!")
     else:
         print("Gép nyerte!")
 elif jatekmod == "Barát":
-    embervsember()
-    if egyjatekos > 21:
-        print("A játékos 1 nyerte!")
-    elif kettojatekos > 21:
+    egyjatekosertek, kettojatekosertek = embervsember()
+    if egyjatekosertek > 21:
         print("A játékos 2 nyerte!")
+    elif kettojatekosertek > 21:
+        print("A játékos 1 nyerte!")
     elif egyjatekosertek > kettojatekosertek:
         print("Játékos 1 nyerte!")
-    else:
+    elif egyjatekosertek < kettojatekosertek:
         print("Játékos 2 nyerte!")
 
 else:
