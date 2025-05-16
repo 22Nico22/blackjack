@@ -46,15 +46,24 @@ def embervsember():
 
 if jatekmod == "Gép":
     npc()
-    if sum(jatekos) > 21:
+    if jatekosertek > 21:
         print("A gép nyerte!")
-    if sum(npc) > 21
+    if npcertek > 21
         print("Játékos nyerte!")
-    if sum(jatekos) > sum(npc):
+    if jatekosertek > npcertek:
         print("Játékos nyerte!")
     else:
         print("Gép nyerte!")
 elif jatekmod == "Barát":
     embervsember()
+    if egyjatekos > 21:
+        print("A játékos 1 nyerte!")
+    elif kettojatekos > 21:
+        print("A játékos 2 nyerte!")
+    elif egyjatekosertek > kettojatekosertek:
+        print("Játékos 1 nyerte!")
+    else:
+        print("Játékos 2 nyerte!")
+
 else:
     print("Nem megfelelő játékmódot adtál meg!")
