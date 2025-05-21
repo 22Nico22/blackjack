@@ -1,11 +1,9 @@
 import random
 print("Blackjack játék")
-jatekmod = input("Barát vagy Gép ellen szerenél játszani ?: ")
+jatekmod = input("Barát vagy Gép ellen szerenél játszani ?: ").lower()
 
 def npc():
-    jatekos = []
-    jatekos.append(random.randint(2, 11))
-    jatekos.append(random.randint(2, 11))
+    jatekos = [random.randint(2, 11), random.randint(2, 11)]
     jatekosdb = len(jatekos)
     jatekosertek = sum(jatekos)
     print(jatekos)
@@ -14,6 +12,7 @@ def npc():
         jatekos.append(random.randint(2, 11))
         jatekosdb = len(jatekos)
         jatekosertek = sum(jatekos)
+    print(f"Lapok: {jatekos}")
     print(f"Összesen: {jatekosertek}")
     print(f"Játékos lapjainak darab száma: {jatekosdb}")
     print("")
@@ -33,9 +32,7 @@ def npc():
 
 def embervsember():
     print("1. játékos lapjai:")
-    egyjatekos = []
-    egyjatekos.append(random.randint(2, 11))
-    egyjatekos.append(random.randint(2, 11))
+    egyjatekos = [random.randint(2, 11), random.randint(2, 11)]
     egyjatekosertek = sum(egyjatekos)
     egyjatekosdb = len(egyjatekos)
     print(egyjatekos)
@@ -44,26 +41,26 @@ def embervsember():
         egyjatekos.append(random.randint(2, 11))
         egyjatekosertek = sum(egyjatekos)
         egyjatekosdb = len(egyjatekos)
-    print(f"Összege: {egyjatekos}")
+    print(f"Lapok: {egyjatekos}")
+    print(f"Összege: {egyjatekosertek}")
     print(f"Játékos 1 lapjainak száma: {egyjatekosdb}")
     print("")
-    kettojatekos = []
-    kettojatekos.append(random.randint(2, 11))
-    kettojatekos.append(random.randint(2, 11))
-    kettojatekosertek = sum(egyjatekos)
+    kettojatekos = [random.randint(2, 11), random.randint(2, 11)]
+    kettojatekosertek = sum(kettojatekos)
     kettojatekosdb = len(kettojatekos)
     print(kettojatekos)
     kartyahuzasketto = input("Szeretnél kártyát húzni ?")
-    if kartyahuzas.lower() == "igen":
+    if kartyahuzasketto.lower() == "igen":
         kettojatekos.append(random.randint(2, 11))
-        kettojatekosertek = sum(egyjatekos)
+        kettojatekosertek = sum(kettojatekos)
         kettojatekosdb = len(kettojatekos)
+    print(f"Lapok: {kettojatekos}")
     print(f"Összege: {kettojatekosertek}")
     print(f"Játékos 2 lapjainak száma: {kettojatekosdb}")
     print("")
     return egyjatekosertek, kettojatekosertek
 
-if jatekmod == "Gép":
+if jatekmod == "gép":
     jatekosertek, npcertek = npc()
     if jatekosertek > 21:
         print("A gép nyerte!")
@@ -73,7 +70,8 @@ if jatekmod == "Gép":
         print("Játékos nyerte!")
     else:
         print("Gép nyerte!")
-elif jatekmod.lower() == "Barát":
+        
+elif jatekmod.lower() == "barát":
     egyjatekosertek, kettojatekosertek = embervsember()
     if egyjatekosertek > 21:
         print("A játékos 2 nyerte!")
